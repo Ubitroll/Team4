@@ -667,7 +667,7 @@ Prefab:
         type: 2}
       propertyPath: ShapeModule.m_MeshRenderer
       value: 
-      objectReference: {fileID: 543362434}
+      objectReference: {fileID: 471394778}
     - target: {fileID: 199052544358324946, guid: 8fe4e75731136894eab9becfc0924ce9,
         type: 2}
       propertyPath: m_RenderAlignment
