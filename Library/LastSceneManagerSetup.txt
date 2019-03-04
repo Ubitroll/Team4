@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Fire Mechanic/Fire Mechanic/Assets/Fire Mechanic/TestScene.unity
+- path: Assets/Scenes/GCU IP2 Prototype Whitebox.unity
   isLoaded: 1
   isActive: 1

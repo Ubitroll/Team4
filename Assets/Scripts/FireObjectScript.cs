@@ -8,9 +8,8 @@ public class FireObjectScript : MonoBehaviour
 {
 	public GameObject[] flamableObjects; // array of all the objects that candle can burn
 	GameObject closestObject; // closest flamable object
-	Vector3 closestObjectPos; // closest flamable object's position
 	Vector3 candleCurrentPos; // candle position
-	float distanceDifference = Mathf.Infinity; // distance difference between the candle and nearest flamable object face
+	float distanceDifference = Mathf.Infinity; // distance difference between the candle and nearest flamable object's face
 	float timePuttingFire = 0.0f; // how long the candle was lighting up an object
 	public Text candleUI; // UI text to light up and object
 	public Image fireBar; // fire bar displaying how much is left to fire up the object
