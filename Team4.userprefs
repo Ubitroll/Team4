@@ -1,11 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HouseHealth.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ExtinguishObject.cs">
     <Files>
-      <File FileName="Assets\Scripts\HouseHealth.cs" Line="22" Column="45" />
-      <File FileName="Assets\Scripts\FireObjectScript.cs" Line="40" Column="3" />
-      <File FileName="Assets\Scripts\ItemScript.cs" Line="46" Column="58" />
-      <File FileName="C:\Users\dawid\Desktop\Fire Mechanic\Assets\Fire Mechanic\Flammable.cs" Line="90" Column="6" />
+      <File FileName="Assets\Scripts\ItemScript.cs" Line="64" Column="26" />
+      <File FileName="Assets\Scripts\ExtinguishObject.cs" Line="52" Column="18" />
+      <File FileName="Assets\Scripts\FireObjectScript.cs" Line="137" Column="48" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

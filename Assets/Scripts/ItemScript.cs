@@ -7,7 +7,7 @@ public class ItemScript : MonoBehaviour
 	public float health = 100.0f; // should be 100
 	public float timeToFire = 10.0f; // differs on items, time in seconds the candle needs to set the item on fire
 	public float timePuttingFire = 0.0f; // amount of time the object is putting on another object nearby
-	public float timeToExtinguish = 20.0f; // differs on items, time in seconds the human needs to pour water on to extinguish the fire
+	public float waterAmountNeeded = 20.0f; // differs on items, amount of water the human needs to use to extinguish the fire
 	public float durability = 1.0f; // the multiplier on how fast the item should burn
 	public bool onFire = false; // boolean value to check if the item is on fire
 	public bool extinguished = false; // boolean value to check if the item was extinguished, if so, the timeToFire changes
@@ -62,7 +62,7 @@ public class ItemScript : MonoBehaviour
 	{
 		this.health = 0.0f;
 		this.timeToFire = 0.0f;
-		this.timeToExtinguish = 0.0f;
+		this.waterAmountNeeded = 0.0f;
 		this.durability = 0.0f;
 		this.onFire = false;
 		this.extinguished = false;

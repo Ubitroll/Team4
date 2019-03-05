@@ -61,6 +61,7 @@
      <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+     <Compile Include="Assets\Scripts\ExtinguishObject.cs" />
      <Compile Include="Assets\Scripts\FireObjectScript.cs" />
      <Compile Include="Assets\Scripts\HouseHealth.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
