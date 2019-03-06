@@ -65,6 +65,9 @@
      <Compile Include="Assets\Scripts\FireObjectScript.cs" />
      <Compile Include="Assets\Scripts\HouseHealth.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
+     <Compile Include="Assets\Scripts\WaterBombScript.cs" />
+     <Compile Include="Assets\Scripts\WaterGunScript.cs" />
+     <Compile Include="Assets\Scripts\WaterMugScript.cs" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/Studia/Rok 2 Trymestr B/Integrated Project 2/Team4/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

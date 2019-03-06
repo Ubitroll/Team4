@@ -10,7 +10,8 @@ public class ItemScript : MonoBehaviour
 	public float waterAmountNeeded = 20.0f; // differs on items, amount of water the human needs to use to extinguish the fire
 	public float durability = 1.0f; // the multiplier on how fast the item should burn
 	public bool onFire = false; // boolean value to check if the item is on fire
-	public bool extinguished = false; // boolean value to check if the item was extinguished, if so, the timeToFire changes
+	public bool extinguished = false; // boolean value to check if the item has been extinguished
+	public bool wasExtinguished = false; // checks if the item was previously extinguished, doubles the timeToFire variable, can happen only once throughout the game
 	public float fireSpreadRadius = 10.0f;
 
 	private GameObject[] flamableObjects;
@@ -43,7 +44,7 @@ public class ItemScript : MonoBehaviour
 					// putting fire on the object, the further the object the longer it's going to take to light it up. // EXAMPLE 0.1 * (1 / 5) = 0.02, the object is 5 units away
 					timePuttingFire += Time.deltaTime * (1 / fireRate);
 
-					Debug.Log ("I'm " + this.gameObject.name + " and I'm lighting up " + col.gameObject.name + " object, distance from the object is " + distance + ", fireRate = " + fireRate + " timePuttingFire: " + timePuttingFire);
+					//Debug.Log ("I'm " + this.gameObject.name + " and I'm lighting up " + col.gameObject.name + " object, distance from the object is " + distance + ", fireRate = " + fireRate + " timePuttingFire: " + timePuttingFire);
 
 					// if the amount of time putting on other object exeeds the needed to fire it up
 					if (timePuttingFire >= itemScript.timeToFire) {
@@ -124,7 +125,7 @@ public class ItemScript : MonoBehaviour
 		} else
 		{
 			fireEffectOn = false;
-			if (GameObject.Find("Fire(Clone)"))
+			if (GameObject.Find("Fire(Clone)") != null)
 				Destroy(fireEffect);
 		}
 
@@ -134,11 +135,17 @@ public class ItemScript : MonoBehaviour
 			BlockActionOnThisObject();
 		}
 
-		// if the item extinguished the next time it will take double amount of time to set it on fire. Can happen one time throughout the game that's why immediately after checking the extinguished value is changed to false.
+		// if the item extinguished the next time it will take double amount of time to set it on fire. Can happen one time throughout the game that's why immediately after checking the wasExtinguished value is changed to true.
 		if (this.extinguished) 
 		{
-			this.timeToFire *= 2;
-			extinguished = false;
+			onFire = false;
+
+			if (!(wasExtinguished))
+				timeToFire *= 2;
+			
+			wasExtinguished = true; // this then would stay true through the whole game and the if statement before it will only be called once.
 		}
+
+
     }
 }

@@ -6,20 +6,21 @@ using UnityEngine.UI;
 public class ExtinguishObject : MonoBehaviour
 {
 	int currentWeapon = 0; // 0 = no weapon, 1 = "Water-Gun", 2 = "Water-Bomb", 3 = "Water-Mug"
-	public GameObject[] waterSupplyObjects; // array of all the objects that candle can burn
+	public GameObject[] waterSupplyObjects; // array of all the objects that human can use to refill weapons with water
+	public GameObject waterGun;
+	public GameObject waterBomb;
+	public GameObject waterMug;
 	float distanceToWater = Mathf.Infinity; // distance to water supply
 	float distanceToFire = Mathf.Infinity; // distance to flamable object's point he is raycasting
 	public Image extinguishBar; // fire bar displaying how much is left to fire up the object
 	public Image humanCrosshair;
-	private float amountFilled = 0.0f; // amount of bar to be filled (how much the human extinguished the object already)
+	public bool raycastedFire = false; // needed to use this to make the extinguish bar properly work
 
+	private float amountFilled = 0.0f; // amount of bar to be filled (how much the human extinguished the object already)
 	private Vector3 currentHumanPos;
-	private bool raycastedFire = false; // needed to use this to make the extinguish bar properly work
-	private float waterAmount = 0.0f;
-	private float gunAmmo = 0.0f;
-	private float bombAmmo = 0.0f;
-	private float mugAmmo = 0.0f;
-   
+	private bool nearWaterTrigger = false; // used on trigger enter and exit, if true the player can fill up his weapons with water
+	private float waterAmount = 0.0f; // used to know how much water was poured over fired object
+
 	// Finds and returns the closest watter supply object
 	GameObject FindClosestWaterSupplyObject()
 	{
@@ -45,35 +46,25 @@ public class ExtinguishObject : MonoBehaviour
 		return closestObject;
 	}
 
-	private void FillUpWater(bool boolean)
+	private void FillUpWater()
 	{
-		if (boolean) 
-		{
-			Debug.Log ("Filling up current weapon with water");
-		}
-		else 
-		{
-			Debug.Log("Stopped filling up current weapon with water");
-		}
+		Debug.Log ("Filling up current weapon with water");
 	}
 
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider collider)
 	{
-		if (collision.gameObject.tag == "WaterSupply")
-			FillUpWater (true);
-
-		Debug.Log (collision.gameObject.name + " object!");
+		if (collider.gameObject.tag == "WaterSupply")
+			nearWaterTrigger = true;
+		Debug.Log ("Human entered trigger " + collider.gameObject.name + " object.");
 	}
 
-	void OnCollisionExit(Collision collision)
+	void OnTriggerExit(Collider collider)
 	{
-		if (collision.gameObject.tag == "WaterSupply")
-			FillUpWater (false);
-
-		Debug.Log (collision.gameObject.name + " object! exit");
+		if (collider.gameObject.tag == "WaterSupply")
+			nearWaterTrigger = false;
+		Debug.Log ("Human exited trigger " + collider.gameObject.name + " object.");
 	}
-
-
+		
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -83,39 +74,54 @@ public class ExtinguishObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		// if the player entered the trigger associated with water supply
+		if (nearWaterTrigger) 
+		{
+			FillUpWater ();
+		}
+
+		// stores the key player presses
+		string pressedKey = Input.inputString;
+
+		// checking which weapon should be displayed
+		switch (pressedKey) 
+		{
+			case "0":
+				currentWeapon = 0;
+				waterGun.gameObject.SetActive (false);
+				waterBomb.gameObject.SetActive (false);
+				waterMug.gameObject.SetActive (false);
+				Debug.Log ("No weapons selected!");
+				break;
+			case "1":
+				currentWeapon = 1;
+				waterGun.gameObject.SetActive (true);
+				waterBomb.gameObject.SetActive (false);
+				waterMug.gameObject.SetActive (false);
+				Debug.Log ("Selected water gun!");
+				break;
+			case "2":
+				currentWeapon = 2;
+				waterGun.gameObject.SetActive (false);
+				waterBomb.gameObject.SetActive (true);
+				waterMug.gameObject.SetActive (false);
+				Debug.Log ("Selected water bomb!");
+				break;
+			case "3":
+				currentWeapon = 3;
+				waterGun.gameObject.SetActive (false);
+				waterBomb.gameObject.SetActive (false);
+				waterMug.gameObject.SetActive (true);
+				Debug.Log ("Selected water mug!");
+				break;
+			default:
+				break;
+		}
+
 		// moving the crosshair to the center of his screen
 		humanCrosshair.transform.position = new Vector3(Screen.width * 0.75f, Screen.height * 0.5f);
 			
 		currentHumanPos = this.transform.position;
-
-		RaycastHit hit;
-			
-		// raycast
-		if (Physics.Raycast (this.transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) 
-		{	
-			if (hit.collider.gameObject.tag == "Flamable") 
-			{
-				ItemScript itemScript = hit.collider.gameObject.GetComponent<ItemScript> ();	
-
-				Debug.Log ("HIT OBJECT " + hit.collider.name);
-
-				amountFilled = waterAmount / itemScript.waterAmountNeeded;
-
-				// UI elements showing up
-				if (itemScript.onFire) 
-				{
-					raycastedFire = true;
-				}
-				else
-				{
-					raycastedFire = false;
-				}
-
-			}
-			else
-				raycastedFire = false;
-		}
-
 
 		// UI elements showing up
 		if (raycastedFire) 
