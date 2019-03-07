@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/GCU IP2 Prototype Whitebox.unity
+=======
+- path: Fire Mechanic/Fire Mechanic/Assets/Fire Mechanic/TestScene.unity
+>>>>>>> parent of e91208a... Controllers 1
   isLoaded: 1
   isActive: 1
