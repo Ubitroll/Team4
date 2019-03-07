@@ -10,11 +10,11 @@ public class WaterGunScript : MonoBehaviour
 	public float waterAmount = 5.0f; // how much water there is in one 'shot' that can be applied on ONE fired objects
 	public float waterRange = 10.0f; // how far the water can reach 
 	public float amountFilled = 0.0f;
-	public bool outOfAmmo = false;
 
 	public Text ammoText;
 	private bool isAbleToShoot = true;
 	private bool isReloading = false;
+	private GameObject steamEffect;
 
 	IEnumerator DelayShooting()
 	{
@@ -23,34 +23,54 @@ public class WaterGunScript : MonoBehaviour
 		isAbleToShoot = true;
 	}
 
+	IEnumerator AddSteamEffect(ItemScript itemScript)
+	{
+		Debug.Log ("Coroutine started!");
+		steamEffect = Instantiate (Resources.Load("Prefabs/Steam"), itemScript.transform.position, Quaternion.identity) as GameObject;
+		yield return new WaitForSeconds (1.5f);
+		Destroy(steamEffect);
+		Debug.Log ("Coroutine stopped!");
+	}
+
 	void Reload()
 	{
+		// if there actually is need to reload
+		if (10 - waterAmmoClip == 0 || waterAmmoClip > waterAmmoAll)
+			return;
+
+		// reloads only once and not every frame
+		isReloading = true;
+
 		// ammoToFill = clip size - current clip size
 		float ammoToFill = 10 - waterAmmoClip;
 
 		// If there is enough ammo in reserve to reload
-		if (ammoToFill - waterAmmoAll < 0) 
+		if (ammoToFill - waterAmmoAll > 0) 
 		{
 			waterAmmoClip += ammoToFill;
 			waterAmmoAll = 0;
-		} else 
+		} 
+		else 
 		{
-			waterAmmoAll -= waterAmmoClip;
+			waterAmmoAll -= 10 - waterAmmoClip;
 			waterAmmoClip = 10;
 		}
+
+		isReloading = false;
 	}
 
 	void ShootWater()
 	{
-		Debug.Log ("Shooting water!");
 		if (waterAmmoClip > 0) 
 		{
+			//Debug.Log ("Shooting water!");
 			waterAmmoClip--;
 
 			RaycastHit hit = new RaycastHit ();
 
 			// raycast
-			if (Physics.Raycast (this.transform.position, transform.TransformDirection (Vector3.forward), out hit, waterRange)) {	
+			if (Physics.Raycast (this.transform.position, transform.TransformDirection (Vector3.forward), out hit, waterRange)) 
+			{	
 				// used to change variable that shows up UI
 				ExtinguishObject extinguishObject = GameObject.Find ("Human").GetComponent<ExtinguishObject> ();
 
@@ -64,8 +84,10 @@ public class WaterGunScript : MonoBehaviour
 					// used to show up UI elements, when the player points at fired object
 					if (itemScript.onFire && extinguishObject != null) 
 					{
+						StartCoroutine (AddSteamEffect (itemScript));
 						extinguishObject.raycastedFire = true;
 						amountFilled += waterAmount;
+
 						Debug.Log ("Amount Filled " + amountFilled);
 
 						if (amountFilled >= itemScript.waterAmountNeeded) 
@@ -80,9 +102,8 @@ public class WaterGunScript : MonoBehaviour
 
 				} else if (extinguishObject != null) // checking first if the object was found
 					extinguishObject.raycastedFire = false;
-			}
-		} else
-			outOfAmmo = true;
+			}// end of Physics.Raycast
+		}// end of waterAmmoClip > 0
 	}
 
     // Start is called before the first frame update
@@ -97,22 +118,17 @@ public class WaterGunScript : MonoBehaviour
 		// checking if the gun is activated by player
 		if (this.gameObject.activeSelf) 
 		{
-			if (waterAmmoClip <= 0) 
-			{
-				waterAmmoClip = 0;
-				outOfAmmo = true;
-			}
-
 			if (Input.GetButton ("Fire1") && isAbleToShoot && !(isReloading)) 
 			{
 				StartCoroutine (DelayShooting ());
 				ShootWater ();
 			}
 
-			if (Input.GetKey (KeyCode.R))
+			if (Input.GetKey (KeyCode.R) && !(isReloading))
 				Reload ();
 
-			ammoText.text = "Ammo " + waterAmmoClip + " / " + maxWaterAmmoAll;
+			// displaying UI text with ammunition
+			ammoText.text = "Ammo " + waterAmmoClip + " / " + waterAmmoAll;
 		} 
 		else 
 		{
