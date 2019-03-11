@@ -13,6 +13,7 @@ public class ItemScript : MonoBehaviour
 	public bool extinguished = false; // boolean value to check if the item has been extinguished
 	public bool wasExtinguished = false; // checks if the item was previously extinguished, doubles the timeToFire variable, can happen only once throughout the game
 	public float fireSpreadRadius = 10.0f;
+	public float amountOfWater = 0.0f;
 
 	private GameObject[] flamableObjects;
 	private GameObject fireEffect; // fire particle effect
@@ -42,7 +43,7 @@ public class ItemScript : MonoBehaviour
 					// the closer the object the bigger the number which will lead to more quickly putting the nearby object on fire
 					float fireRate = fireSpreadRadius - distance; // example 10 - 3, fireRate = 7
 					// putting fire on the object, the further the object the longer it's going to take to light it up. // EXAMPLE 0.1 * (1 / 5) = 0.02, the object is 5 units away
-					timePuttingFire += Time.deltaTime * (1 / fireRate);
+					timePuttingFire += Time.deltaTime * (0.1f / fireRate);
 
 					//Debug.Log ("I'm " + this.gameObject.name + " and I'm lighting up " + col.gameObject.name + " object, distance from the object is " + distance + ", fireRate = " + fireRate + " timePuttingFire: " + timePuttingFire);
 
@@ -67,6 +68,7 @@ public class ItemScript : MonoBehaviour
 		this.durability = 0.0f;
 		this.onFire = false;
 		this.extinguished = false;
+		this.amountOfWater = 0.0f;
 
 		// replacing the tag so that the candle's function won't find it as flamable object
 		this.transform.gameObject.tag = "Burnt";
@@ -139,13 +141,22 @@ public class ItemScript : MonoBehaviour
 		if (this.extinguished) 
 		{
 			onFire = false;
+			amountOfWater = 0.0f;
 
 			if (!(wasExtinguished))
-				timeToFire *= 2;
-			
+				timeToFire *= 2;	
 			wasExtinguished = true; // this then would stay true through the whole game and the if statement before it will only be called once.
 		}
 
+		// if the item is filled with enough water it's extinguished. checking onFire just to be sure, but should be checked in other scripts before accessing the amountOfWater
+		if (onFire && amountOfWater >= waterAmountNeeded)
+			this.extinguished = true;
 
+		// if the user hasn't finished extinguishing the object it will slowly lose the amountOfWater, so he will have to start all over again if he doesn't try to extinguish the object for long
+		if (amountOfWater > 0) 
+		{
+			//Debug.Log ("amount of water: " + amountOfWater);
+			amountOfWater -= Time.deltaTime * 0.2f;
+		}
     }
 }

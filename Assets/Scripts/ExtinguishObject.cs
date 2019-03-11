@@ -6,40 +6,107 @@ using UnityEngine.UI;
 public class ExtinguishObject : MonoBehaviour
 {
 	int currentWeapon = 0; // 0 = no weapon, 1 = "Water-Gun", 2 = "Water-Bomb", 3 = "Water-Mug"
-	public GameObject[] waterSupplyObjects; // array of all the objects that human can use to refill weapons with water
-	public List<GameObject> waterWeapons;
+	public List<GameObject> waterWeapons; // used array to make it easier in future to add more weapons.
 	public GameObject waterGun;
 	public GameObject waterBomb;
-	public GameObject waterMug;
 	float distanceToWater = Mathf.Infinity; // distance to water supply
 	float distanceToFire = Mathf.Infinity; // distance to flamable object's point he is raycasting
 	public Image extinguishBar; // fire bar displaying how much is left to fire up the object
 	public Image humanCrosshair;
 	public float throwForce = 30.0f;
 	public bool raycastedFire = false; // needed to use this to make the extinguish bar properly work
+	public Text humanUI; // UI text
+	public Text ammoText;
 
 	private float amountFilled = 0.0f; // amount of bar to be filled (how much the human extinguished the object already)
 	private Vector3 currentHumanPos;
 	private bool nearWaterTrigger = false; // used on trigger enter and exit, if true the player can fill up his weapons with water
 	private float waterAmount = 0.0f; // used to know how much water was poured over fired object
 	private bool isAbleToThrow = true; // associated with throwing the water bomb
+	private float timeFillingUp = 0.0f; // used for refilling the weapons with water
 
 	private void FillUpWater(GameObject weapon)
 	{
-		Debug.Log ("Filling up current weapon with water");
+		if(Input.GetKey(KeyCode.E))
+		{
+			Debug.Log ("Filling up current weapon with water");
+
+			// if the weapon is water gun
+			if (weapon == waterGun) 
+			{
+				WaterGunScript waterGunScript = waterGun.GetComponent<WaterGunScript> ();
+
+				// assuming the water gun can have maximum of 30 ammo (10 in clip and 20 in reserve)
+				int currentAmmo = waterGunScript.waterAmmoClip + waterGunScript.waterAmmoClip;
+
+				if (currentAmmo < 30) 
+				{
+					// filling up
+					timeFillingUp += Time.deltaTime;
+
+					// giving 1 ammo each second
+					if (timeFillingUp > 1) 
+					{
+						// firstly filling the clip
+						if (waterGunScript.waterAmmoClip < 10) 
+						{
+							waterGunScript.waterAmmoClip++;
+						} 
+						else // then filling up the reserve ammo
+							if(waterGunScript.waterAmmoAll < 20)
+							{
+								waterGunScript.waterAmmoAll++;
+							}
+						
+						// resetting
+						timeFillingUp = 0.0f;
+					}
+				}
+				
+			}
+
+			if (weapon == waterBomb) 
+			{
+				WaterBombScript waterBombScript = waterBomb.GetComponent<WaterBombScript> ();
+				
+				// assuming the player can only have maximum of 10 bombs
+				if (waterBombScript.numberOfBombs < 10) 
+				{
+					// filling up
+					timeFillingUp += Time.deltaTime;
+
+					// giving 1 bomb each 3 seconds
+					if(timeFillingUp > 3)
+					{
+						waterBombScript.numberOfBombs++;
+
+						// resetting
+						timeFillingUp = 0.0f;
+					}
+				
+				}
+			}
+		}
 	}
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.tag == "WaterSupply")
+		if (collider.gameObject.tag == "WaterSupply") 
+		{
 			nearWaterTrigger = true;
+			humanUI.text = "Hold E to fill up!";
+		}
 		Debug.Log ("Human entered trigger " + collider.gameObject.name + " object.");
 	}
 
 	void OnTriggerExit(Collider collider)
 	{
 		if (collider.gameObject.tag == "WaterSupply")
+		{
 			nearWaterTrigger = false;
+			humanUI.text = "";
+		}
+
 		Debug.Log ("Human exited trigger " + collider.gameObject.name + " object.");
 	}
 		
@@ -52,8 +119,14 @@ public class ExtinguishObject : MonoBehaviour
 
 	void ThrowWaterBomb()
 	{
-		GameObject bomb = Instantiate (Resources.Load("Prefabs/Water-Bomb"), waterBomb.transform.position, Quaternion.identity) as GameObject;
-		bomb.GetComponent<Rigidbody> ().AddForce (transform.forward * throwForce, ForceMode.Impulse);
+		WaterBombScript waterBombScript = waterBomb.GetComponent<WaterBombScript> ();
+
+		if (waterBombScript.numberOfBombs > 0) 
+		{
+			waterBombScript.numberOfBombs--;
+			GameObject bomb = Instantiate (Resources.Load ("Prefabs/Water-Bomb"), waterBomb.transform.position, Quaternion.identity) as GameObject;
+			bomb.GetComponent<Rigidbody> ().AddForce (transform.forward * throwForce, ForceMode.Impulse);
+		}
 	}
 
 	// Start is called before the first frame update
@@ -63,7 +136,6 @@ public class ExtinguishObject : MonoBehaviour
 		// assigning gameobjects to waterWeapons array
 		waterWeapons.Add(waterGun);
 		waterWeapons.Add(waterBomb);
-		waterWeapons.Add(waterMug);
 	}
 
     // Update is called once per frame
@@ -73,9 +145,10 @@ public class ExtinguishObject : MonoBehaviour
 		if (nearWaterTrigger) 
 		{
 			// if current weapon isn't no weapon
-			if(currentWeapon != 0)
-				FillUpWater (waterWeapons[currentWeapon - 1]);
-		}
+			if (currentWeapon != 0)
+				FillUpWater (waterWeapons [currentWeapon - 1]);
+		} 
+
 
 		// stores the key player presses
 		string pressedKey = Input.inputString;
@@ -83,13 +156,15 @@ public class ExtinguishObject : MonoBehaviour
 		// checking which weapon should be displayed
 		switch (pressedKey) 
 		{
-			case "0":
+		case "0":
 				currentWeapon = 0;
-				// disactivating all weapons
+					// disactivating all weapons
 				for (int i = 0; i < waterWeapons.Count; i++) 
 				{
 					waterWeapons [i].SetActive (false);
 				}
+
+				ammoText.text = "";
 				//Debug.Log ("No weapons selected!");
 				break;
 			case "1":
@@ -116,18 +191,6 @@ public class ExtinguishObject : MonoBehaviour
 				}
 				//Debug.Log ("Selected water bomb!");
 				break;
-			case "3":
-				currentWeapon = 3;
-				// making current weapon gameobject active and disactivating others
-				for (int i = 0; i < waterWeapons.Count; i++) 
-				{
-					if (i == currentWeapon - 1)
-						waterWeapons [i].SetActive (true);
-					else
-						waterWeapons [i].SetActive (false);
-				}
-				//Debug.Log ("Selected water mug!");
-				break;
 			default:
 				break;
 		}
@@ -149,9 +212,33 @@ public class ExtinguishObject : MonoBehaviour
 			
 		currentHumanPos = this.transform.position;
 
+		RaycastHit hit = new RaycastHit ();
+
+		// raycast
+		if (Physics.Raycast (this.transform.position, transform.TransformDirection (Vector3.forward), out hit, Mathf.Infinity)) 
+		{
+			if (hit.collider.gameObject.tag == "Flamable") 
+			{
+				ItemScript itemScript = hit.collider.gameObject.GetComponent<ItemScript> ();
+
+				if (itemScript.onFire)
+					raycastedFire = true;
+				else
+					raycastedFire = false;
+			}
+		}
+
 		// UI elements showing up
 		if (raycastedFire) 
 		{
+			ItemScript itemScript = hit.collider.gameObject.GetComponent<ItemScript> ();
+			if(itemScript != null)
+				amountFilled = itemScript.amountOfWater / itemScript.waterAmountNeeded;
+
+			// to make sure the blue colour doesn't exeed the width of the extinguish bar
+			if (amountFilled > 1)
+				amountFilled = 1;
+			
 			// Showing text and extinguish bar
 			extinguishBar.enabled = true;
 			extinguishBar.transform.GetChild (0).gameObject.SetActive (true);
@@ -159,6 +246,7 @@ public class ExtinguishObject : MonoBehaviour
 		}
 		else
 		{
+			amountFilled = 0;
 			extinguishBar.enabled = false;
 			extinguishBar.transform.GetChild (0).gameObject.SetActive (false);
 		}

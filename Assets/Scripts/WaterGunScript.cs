@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class WaterGunScript : MonoBehaviour
 {
-	public float waterAmmoClip = 10.0f; // how much water the weapon stores (how much can be used or how much needs to be refilled)
-	public float waterAmmoAll = 20.0f;
+	public int waterAmmoClip = 10; // how much water one clip stores
+	public int waterAmmoAll = 20; // how much all water there is
 	public float waterAmount = 5.0f; // how much water there is in one 'shot' that can be applied on ONE fired objects
 	public float waterRange = 10.0f; // how far the water can reach 
-	public float amountFilled = 0.0f;
 
 	public Text ammoText;
 	private bool isAbleToShoot = true;
@@ -27,7 +26,7 @@ public class WaterGunScript : MonoBehaviour
 	{
 		Debug.Log ("Coroutine started!");
 		steamEffect = Instantiate (Resources.Load("Prefabs/Steam"), itemScript.transform.position, Quaternion.identity) as GameObject;
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1.0f);
 		Destroy(steamEffect);
 		Debug.Log ("Coroutine stopped!");
 	}
@@ -42,7 +41,7 @@ public class WaterGunScript : MonoBehaviour
 		isReloading = true;
 
 		// ammoToFill = clip size - current clip size
-		float ammoToFill = 10 - waterAmmoClip;
+		int ammoToFill = 10 - waterAmmoClip;
 
 		// If there is enough ammo in reserve to reload
 		if (ammoToFill - waterAmmoAll > 0) 
@@ -85,15 +84,13 @@ public class WaterGunScript : MonoBehaviour
 					if (itemScript.onFire && extinguishObject != null) 
 					{
 						StartCoroutine (AddSteamEffect (itemScript));
+
 						extinguishObject.raycastedFire = true;
-						amountFilled += waterAmount;
 
-						Debug.Log ("Amount Filled " + amountFilled);
+						// passing the amount of water to itemscript
+						itemScript.amountOfWater += waterAmount;
 
-						if (amountFilled >= itemScript.waterAmountNeeded) 
-						{
-							itemScript.extinguished = true;
-						}
+						Debug.Log ("Amount Filled " + itemScript.amountOfWater);
 					} 
 					else 
 					{

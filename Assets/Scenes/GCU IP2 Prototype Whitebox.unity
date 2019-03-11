@@ -278,6 +278,7 @@ RectTransform:
   - {fileID: 756249438}
   - {fileID: 769256635}
   - {fileID: 1760828342}
+  - {fileID: 1861889593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -459,6 +460,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &86985822
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +921,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &132220393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1035,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &159144148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1224,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &281441612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1417,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &376609863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1713,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &399618313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,6 +2142,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &545628323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,118 +2286,8 @@ MonoBehaviour:
   waterAmmoClip: 10
   waterAmmoAll: 20
   waterAmount: 5
-  waterRange: 20
-  amountFilled: 0
+  waterRange: 40
   ammoText: {fileID: 1760828343}
---- !u!1 &625496793
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 625496794}
-  - component: {fileID: 625496797}
-  - component: {fileID: 625496796}
-  - component: {fileID: 625496795}
-  - component: {fileID: 625496798}
-  m_Layer: 0
-  m_Name: Water-Mug
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &625496794
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625496793}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.148, y: 0.4872, z: 0.564}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_Children: []
-  m_Father: {fileID: 1957818338}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &625496795
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625496793}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &625496796
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625496793}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: ace554b28b3c23448817bd8c63e751ff, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &625496797
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625496793}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &625496798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625496793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c28009a9941a687459a6da7a3b305d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterAmmo: 0
-  waterAmount: 0
-  wateringSpeed: 0
-  waterRange: 0
-  outOfAmmo: 0
 --- !u!1 &635182151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,6 +2497,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &649595284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2690,18 +2589,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649595284}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &669079336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2899674540419830913, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2899674539952079785}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &669079337 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2899674539952079785}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &708749246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,6 +2794,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &756249435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,6 +2983,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &766737943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,6 +3188,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &767615211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,6 +3629,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &814813578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4060,7 +3951,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926128937}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -4108,6 +3999,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &966146389
 GameObject:
   m_ObjectHideFlags: 0
@@ -4333,6 +4225,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1032732549
 GameObject:
   m_ObjectHideFlags: 0
@@ -4446,6 +4339,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1066882331
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,6 +4544,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1156803049
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,6 +4658,19 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
+--- !u!1 &1159091483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5134592339997769827, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5134592338874865016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1159091484 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5134592338874865016}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1223300088
 GameObject:
   m_ObjectHideFlags: 0
@@ -4998,6 +4906,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1349587821
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,6 +5111,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1369655289
 GameObject:
   m_ObjectHideFlags: 0
@@ -5315,6 +5225,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1448174356
 GameObject:
   m_ObjectHideFlags: 0
@@ -5424,10 +5335,11 @@ MonoBehaviour:
   timePuttingFire: 0
   waterAmountNeeded: 20
   durability: 1
-  onFire: 0
+  onFire: 1
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1456441127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5637,6 +5549,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1478318153
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,6 +5658,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!224 &1478318159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6127,6 +6041,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1646051447
 GameObject:
   m_ObjectHideFlags: 0
@@ -6643,6 +6558,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: -90.15501, z: 0}
+--- !u!1 &1861889592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1861889593}
+  - component: {fileID: 1861889595}
+  - component: {fileID: 1861889594}
+  m_Layer: 5
+  m_Name: HumanUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1861889593
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861889592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 35781778}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -61, y: 21}
+  m_SizeDelta: {x: 500, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1861889594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861889592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 21
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1861889595
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861889592}
+  m_CullTransparentMesh: 0
 --- !u!1 &1885393844
 GameObject:
   m_ObjectHideFlags: 0
@@ -6847,6 +6841,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &1957818333
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,8 +7137,7 @@ Transform:
   - {fileID: 13700943}
   - {fileID: 708749247}
   - {fileID: 565380930}
-  - {fileID: 625496794}
-  - {fileID: 669079337}
+  - {fileID: 1159091484}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7162,12 +7156,14 @@ MonoBehaviour:
   waterSupplyObjects: []
   waterWeapons: []
   waterGun: {fileID: 565380929}
-  waterBomb: {fileID: 669079336}
-  waterMug: {fileID: 625496793}
+  waterBomb: {fileID: 1159091483}
+  waterMug: {fileID: 0}
   extinguishBar: {fileID: 756249436}
   humanCrosshair: {fileID: 769256633}
   throwForce: 30
   raycastedFire: 0
+  humanUI: {fileID: 1861889594}
+  ammoText: {fileID: 1760828343}
 --- !u!1 &1973525993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7372,6 +7368,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &2077602806
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,6 +7482,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1001 &2081080734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7671,10 +7669,11 @@ MonoBehaviour:
   timePuttingFire: 0
   waterAmountNeeded: 20
   durability: 1
-  onFire: 0
+  onFire: 1
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &2129929410
 GameObject:
   m_ObjectHideFlags: 0
@@ -7880,6 +7879,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &2143192929
 GameObject:
   m_ObjectHideFlags: 0
@@ -7993,6 +7993,7 @@ MonoBehaviour:
   extinguished: 0
   wasExtinguished: 0
   fireSpreadRadius: 10
+  amountOfWater: 0
 --- !u!1 &2145268952
 GameObject:
   m_ObjectHideFlags: 0
@@ -8084,93 +8085,98 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145268952}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &2899674539952079785
+--- !u!1001 &5134592338874865016
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 1957818338}
     m_Modifications:
-    - target: {fileID: 2899674540419830913, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769827, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_Name
       value: Water-Bomb
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830913, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769827, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.18729873
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.45619997
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.6562106
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.13
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.13
       objectReference: {fileID: 0}
-    - target: {fileID: 2899674540419830912, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+    - target: {fileID: 5134592339997769828, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.13
       objectReference: {fileID: 0}
+    - target: {fileID: 5134592339997769829, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5,
+        type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1760828343}
     m_RemovedComponents:
-    - {fileID: 3106991007944202244, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5, type: 3}
+    - {fileID: 8148944384930313459, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a6ef1c1c77afb5c489abde7a6ed1e6f5, type: 3}
