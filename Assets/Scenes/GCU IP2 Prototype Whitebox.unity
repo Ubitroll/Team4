@@ -115,8 +115,7 @@ NavMeshSettings:
 --- !u!1 &13700942
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1691393382634360, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -135,8 +134,7 @@ GameObject:
 --- !u!4 &13700943
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4049282029607780, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13700942}
@@ -150,8 +148,7 @@ Transform:
 --- !u!124 &13700944
 Behaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 124730658093583996, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13700942}
@@ -159,8 +156,7 @@ Behaviour:
 --- !u!81 &13700945
 AudioListener:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 81436035243688738, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13700942}
@@ -168,8 +164,7 @@ AudioListener:
 --- !u!20 &13700946
 Camera:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 20533888923487670, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13700942}
@@ -449,10 +444,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &86985822
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,10 +903,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &132220393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,10 +1015,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &159144148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1096,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159144148}
   m_CullTransparentMesh: 0
+--- !u!1 &180733883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 180733885}
+  - component: {fileID: 180733884}
+  m_Layer: 0
+  m_Name: CharacterSwapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &180733884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180733883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342da3cd1051dcf4e846a4e1f061827f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  candle: {fileID: 966342017}
+  human: {fileID: 1957818333}
+--- !u!4 &180733885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180733883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.093, y: 8.4, z: 28.163}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254049147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,10 +1247,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &281441612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,10 +1438,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &376609863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,10 +1732,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &534374020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,10 +1940,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &545628323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,10 +2184,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &649595284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,10 +2479,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &763433660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,10 +2591,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &766737943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,10 +2794,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &767615211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,10 +3159,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &814813578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3389,10 +3453,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &966342017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1819200526650476, guid: 40fa2e6e9557cfa4d8c802c1aec0204a,
@@ -3526,10 +3592,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1032732549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3636,10 +3704,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1066882331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,10 +3907,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1156803049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3947,10 +4019,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1223300088
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,10 +4253,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1349587821
 GameObject:
   m_ObjectHideFlags: 0
@@ -4380,10 +4456,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1369655289
 GameObject:
   m_ObjectHideFlags: 0
@@ -4490,10 +4568,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1448174356
 GameObject:
   m_ObjectHideFlags: 0
@@ -4600,10 +4680,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1456441127
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,10 +4888,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1478318153
 GameObject:
   m_ObjectHideFlags: 0
@@ -4911,10 +4995,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!224 &1478318159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5290,10 +5376,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1646051447
 GameObject:
   m_ObjectHideFlags: 0
@@ -5928,15 +6016,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &1957818333
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1464631171499000, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -5952,12 +6041,11 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1957818334
 AudioSource:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 82291635609548214, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957818333}
@@ -6053,8 +6141,7 @@ AudioSource:
 --- !u!54 &1957818335
 Rigidbody:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 54259082535742398, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957818333}
@@ -6070,8 +6157,7 @@ Rigidbody:
 --- !u!114 &1957818336
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114501253446625868, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957818333}
@@ -6195,8 +6281,7 @@ MonoBehaviour:
 --- !u!143 &1957818337
 CharacterController:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 143447263986895790, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957818333}
@@ -6214,8 +6299,7 @@ CharacterController:
 --- !u!4 &1957818338
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4246472805805986, guid: 37e9c615275e6f84aa9866588cb44a85,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957818333}
@@ -6425,10 +6509,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &2077602806
 GameObject:
   m_ObjectHideFlags: 0
@@ -6535,10 +6621,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1001 &2081080734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6718,10 +6806,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &2137842780
 GameObject:
   m_ObjectHideFlags: 0
@@ -6828,10 +6918,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &2143192929
 GameObject:
   m_ObjectHideFlags: 0
@@ -6938,10 +7030,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   timeToFire: 10
+  timePuttingFire: 0
   timeToExtinguish: 20
   durability: 1
   onFire: 0
   extinguished: 0
+  fireSpreadRadius: 10
 --- !u!1 &2145268952
 GameObject:
   m_ObjectHideFlags: 0
