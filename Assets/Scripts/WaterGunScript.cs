@@ -22,38 +22,29 @@ public class WaterGunScript : MonoBehaviour
 		isAbleToShoot = true;
 	}
 
-	IEnumerator AddSteamEffect(ItemScript itemScript)
-	{
-		Debug.Log ("Coroutine started!");
-		steamEffect = Instantiate (Resources.Load("Prefabs/Steam"), itemScript.transform.position, Quaternion.identity) as GameObject;
-		yield return new WaitForSeconds (1.0f);
-		Destroy(steamEffect);
-		Debug.Log ("Coroutine stopped!");
-	}
-
 	void Reload()
 	{
 		// if there actually is need to reload
-		if (10 - waterAmmoClip == 0 || waterAmmoClip > waterAmmoAll)
+		if (10 - waterAmmoClip == 0 || waterAmmoAll == 0)
 			return;
 
-		// reloads only once and not every frame
+		// reloads only once and not every frame that captured the user pressing R key
 		isReloading = true;
 
 		// ammoToFill = clip size - current clip size
 		int ammoToFill = 10 - waterAmmoClip;
 
-		// If there is enough ammo in reserve to reload
-		if (ammoToFill - waterAmmoAll > 0) 
-		{
-			waterAmmoClip += ammoToFill;
-			waterAmmoAll = 0;
-		} 
-		else 
-		{
-			waterAmmoAll -= 10 - waterAmmoClip;
-			waterAmmoClip = 10;
-		}
+        // checking if there is enough ammo in reserve to reload
+        if(waterAmmoAll - ammoToFill > 0)
+        {
+            waterAmmoClip += ammoToFill;
+            waterAmmoAll -= ammoToFill;
+        }
+        else
+        {
+            waterAmmoClip += waterAmmoAll;
+            waterAmmoAll = 0;
+        }
 
 		isReloading = false;
 	}
@@ -83,9 +74,10 @@ public class WaterGunScript : MonoBehaviour
 					// used to show up UI elements, when the player points at fired object
 					if (itemScript.onFire && extinguishObject != null) 
 					{
-						StartCoroutine (AddSteamEffect (itemScript));
+                        // adding steam effect
+                        steamEffect = Instantiate(Resources.Load("Prefabs/Steam"), itemScript.transform.position, Quaternion.identity) as GameObject;
 
-						extinguishObject.raycastedFire = true;
+                        extinguishObject.raycastedFire = true;
 
 						// passing the amount of water to itemscript
 						itemScript.amountOfWater += waterAmount;
@@ -102,12 +94,6 @@ public class WaterGunScript : MonoBehaviour
 			}// end of Physics.Raycast
 		}// end of waterAmmoClip > 0
 	}
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

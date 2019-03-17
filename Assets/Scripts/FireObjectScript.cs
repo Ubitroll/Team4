@@ -87,7 +87,7 @@ public class FireObjectScript : MonoBehaviour
 			timePuttingFire += Time.deltaTime * timeToFireBoost; // multiplying by the boost
 		else
 			timePuttingFire = 0;
-		
+
 		amountFilled = timePuttingFire / itemScript.timeToFire;
 
 		// Debug purposes

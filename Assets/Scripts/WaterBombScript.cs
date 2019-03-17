@@ -13,15 +13,6 @@ public class WaterBombScript : MonoBehaviour
 	private float timeAlive = 0.0f;
 	private GameObject steamEffect;
 
-	IEnumerator AddSteamEffect(ItemScript itemScript)
-	{
-		Debug.Log ("Coroutine started!");
-		steamEffect = Instantiate (Resources.Load("Prefabs/Steam"), itemScript.transform.position, Quaternion.identity) as GameObject;
-		yield return new WaitForSecondsRealtime (1.0f);
-		Debug.Log ("Coroutine stopped!");
-		Destroy(steamEffect);
-	}
-		
 	void OnCollisionEnter(Collision collision)
 	{
 		foreach (Collider col in Physics.OverlapSphere(this.transform.position, waterRadius)) 
@@ -46,10 +37,10 @@ public class WaterBombScript : MonoBehaviour
 					// leting the item script handle extinguishing
 					itemScript.amountOfWater += (waterAmount * (waterRate / 10));
 
-					// adding steam particle effect
-					StartCoroutine (AddSteamEffect (itemScript));
+                    // adding steam particle effect
+                    steamEffect = Instantiate(Resources.Load("Prefabs/Steam"), itemScript.transform.position, Quaternion.identity) as GameObject;
 
-					Debug.Log ("I'm a water bomb and I exploded on " + col.gameObject.name + " object, distance from the object is " + distance + ", amountfilled = " + itemScript.amountOfWater);
+                    Debug.Log ("I'm a water bomb and I exploded on " + col.gameObject.name + " object, distance from the object is " + distance + ", amountfilled = " + itemScript.amountOfWater);
 				} // end of !(itemScript.onFire)
 			}// end of (tag == "Flamable")
 		}// end of foreach
@@ -58,12 +49,6 @@ public class WaterBombScript : MonoBehaviour
 		if(timeAlive > 0.2f)
 			Destroy (this.gameObject);
 	}
-
-    // Start is called before the first frame update
-    void Start()
-    {
-		
-    }
 
     // Update is called once per frame
     void Update()
