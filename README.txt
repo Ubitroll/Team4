@@ -1,0 +1,1 @@
+Disabled capsule collision on human prefab

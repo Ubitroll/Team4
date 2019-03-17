@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flamable
   - Burnt
+  - WaterSupply
   layers:
   - Default
   - TransparentFX
