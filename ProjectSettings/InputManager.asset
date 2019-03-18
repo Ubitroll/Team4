@@ -111,7 +111,11 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0.1
+<<<<<<< HEAD
     sensitivity: 0.6
+=======
+    sensitivity: 1
+>>>>>>> parent of 36e0377... Controller 2
     snap: 0
     invert: 0
     type: 2
@@ -127,7 +131,11 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0.1
+<<<<<<< HEAD
     sensitivity: 0.6
+=======
+    sensitivity: 1
+>>>>>>> parent of 36e0377... Controller 2
     snap: 0
     invert: 1
     type: 2
@@ -230,11 +238,19 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+<<<<<<< HEAD
     m_Name: yButton
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 3
+=======
+    m_Name: Jump
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
+>>>>>>> parent of 36e0377... Controller 2
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
