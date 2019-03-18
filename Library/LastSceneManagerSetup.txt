@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/GCU IP2 Prototype Whitebox.unity
+- path: Assets/Scenes/Prototype2.unity
   isLoaded: 1
   isActive: 1
