@@ -74,9 +74,12 @@
     <Compile Include="Assets\Scripts\FireObjectScript.cs" />
     <Compile Include="Assets\Scripts\HouseHealth.cs" />
     <Compile Include="Assets\Scripts\ItemScript.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\WaterBombScript.cs" />
     <Compile Include="Assets\Scripts\WaterGunScript.cs" />
+=======
+>>>>>>> parent of 36e0377... Controller 2
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/GitHub/Lighten Up/Team4/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
